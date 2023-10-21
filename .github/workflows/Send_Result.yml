@@ -1,4 +1,4 @@
-name: Send_Result
+oname: Send_Result
 on:
   workflow_call:
     inputs:
@@ -16,6 +16,7 @@ jobs:
         run: |
           SECRETO="$FLAG"
           URL="${{ inputs.URL }}/webhook"
+          echo $URL
           curl -X POST -H 'Content-type: application/json' --data '{
             "message": "Todas las condiciones se han cumplido con éxito. Secreto: $SECRETO"
           }' $URL
