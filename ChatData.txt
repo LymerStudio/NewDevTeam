@@ -2,6 +2,6 @@
 
 🌟 Para que te pueda enviar tu codigo es necesarios que nos dejes algunos datos de tu Webhook 🌟
 
-url:
+url: http://localhost:3000/webhook
 
 ¡Gracias por ser parte de nuestro viaje! ✨

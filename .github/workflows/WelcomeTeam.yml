@@ -1,0 +1,48 @@
+name: WelcometoTeam
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - edited
+      
+jobs:
+  validar_pr:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Validar el nombre del branch
+      if: ${{ github.event.pull_request.user.login != github.repository_owner }}
+      run: |
+        BRANCH_NAME="${{ github.head_ref }}"
+        if [[ "$BRANCH_NAME" == "main" || "$BRANCH_NAME" == "master" ]]; then
+          echo "El branch no puede ser 'main' o 'master'."
+          exit 1
+        fi
+      shell: bash
+    - name: Validar comentarios en el commit
+      if: ${{ github.event.pull_request.user.login != github.repository_owner }}
+      run: |
+        COMMENTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" -X GET ${{ github.event.pull_request.commits_url }}/comments)
+        if [ $(echo $COMMENTS | jq length) -eq 0 ]; then
+          echo "No existen comentarios en los commits de la PR."
+          exit 1
+        fi
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Validar comentarios en la solicitud de extracción
+      if: ${{ github.event.pull_request.user.login != github.repository_owner }}
+      run: |
+        COMMENTS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/comments")
+        if [[ "$COMMENTS" == "[]" ]]; then
+          echo "La solicitud debe incluir comentarios."
+          exit 1
+        fi
+      shell: bash
+  send_message:
+    needs: [validar_pr]
+    uses: 404Hack/NewDevTeam/.github/workflows/Send_Result.yml@main
+    with:
+      URL: https://localhost:3000

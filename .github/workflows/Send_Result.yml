@@ -1,0 +1,21 @@
+name: Send_Result
+on:
+  workflow_call:
+    inputs:
+      URL:
+        required: true
+        type: string
+jobs:    
+  send-flag-to-chat:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar mensaje a Slack
+        if: ${{ github.event.pull_request.user.login != github.repository_owner }}
+        env:
+          FLAG: ${{ secrets.FLAG }}
+          URL: ""
+        run: |
+          SECRETO="$FLAG"
+          curl -X POST -H 'Content-type: application/json' --data '{
+            "message": "Todas las condiciones se han cumplido con éxito. Secreto: $SECRETO"
+          }' ${{ inputs.URL }}
