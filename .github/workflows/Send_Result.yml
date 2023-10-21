@@ -1,4 +1,6 @@
 name: Send_Result
+env:
+  NAME: 'DevTeam'
 on:
   workflow_call:
     inputs:
