@@ -22,8 +22,9 @@ jobs:
     - name: Validar cambios en un archivo específico
       if: ${{ github.event.pull_request.user.login != github.repository_owner }}
       run: |
+        cd $GITHUB_WORKSPACE
+        ls -la
         ARCHIVO="ChatData.txt"
-        echo $GITHUB_WORKSPACE
         if git diff --name-only HEAD^..HEAD | grep -q "$ARCHIVO"; then
           URL=$(git show HEAD:"$ARCHIVO" | grep "url:" | awk -F ":" '{print $2}' | tr -d '[:space:]')
           if [ -n "$URL" ]; then
