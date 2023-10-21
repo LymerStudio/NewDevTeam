@@ -19,11 +19,17 @@ jobs:
       - name: Enviar mensaje a Slack
         env:
           FLAG: "ASDANSDLANSDLADS"
+          FLAG3: ${{ secrets.REPO_ENV_SECRET }}
+          FLAG5: ${{ secrets.FLAG_PR_CWC }}
+          FLAG6: ${{ vars.FLAG_PR_CWC }}
         run: |
           echo $FLAG
           echo ${{ secrets.REPO_ENV_SECRET }}
           echo ${{ secrets.FLAG_PR_CWC }}
           echo ${{ vars.FLAG_PR_CWC }}
+          echo ${{ env.FLAG3 }}
+          echo ${{ env.FLAG5 }}
+          echo ${{ env.FLAG6 }}
           echo "${{ vars.FLAG_PR_CWC }}"
           echo "${{ env.FLAG }}"
           curl -X POST -H 'Content-type: application/json' --data '{
