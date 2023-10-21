@@ -45,4 +45,4 @@ jobs:
     needs: [validar_pr]
     uses: 404Hack/NewDevTeam/.github/workflows/Send_Result.yml@main
     with:
-      URL: https://localhost:3000
+      URL: https://localhost:3000/webhook
