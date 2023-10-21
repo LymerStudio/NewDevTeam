@@ -13,9 +13,9 @@ jobs:
         if: ${{ github.event.pull_request.user.login != github.repository_owner }}
         env:
           FLAG: ${{ secrets.FLAG }}
-          URL: ""
         run: |
           SECRETO="$FLAG"
+          URL="${{ inputs.URL }}/webhook"
           curl -X POST -H 'Content-type: application/json' --data '{
             "message": "Todas las condiciones se han cumplido con éxito. Secreto: $SECRETO"
-          }' ${{ inputs.URL }}
+          }' $URL
