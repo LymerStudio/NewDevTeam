@@ -54,8 +54,7 @@ jobs:
           done
         done
       shell: bash
-    - name: Enviar flag al chat
-      if: ${{ github.event.pull_request.user.login != github.repository_owner }}
+  send_message:
       uses: 404Hack/NewDevTeam/.github/workflows/Send_Result.yml@main
       with:
         URL: https://localhost:3000
