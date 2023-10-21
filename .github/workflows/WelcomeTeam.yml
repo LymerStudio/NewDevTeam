@@ -43,14 +43,12 @@ jobs:
       shell: bash
     - name: Agregar comentario a la solicitud de extracción
       if: success()
-      uses: actions/github-script@v5
+      uses: actions/github-script@v6
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        script: |
-          const mensaje = `Todas las condiciones se han cumplido con éxito`;
-          github.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: mensaje
-          })
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thanks for reporting!'
+            })
