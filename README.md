@@ -21,6 +21,8 @@ Somos un equipo apasionado por encontrar soluciones a los problemas. Aquí puede
 - En el directorio, ejecuta el comando npm install
 - Ejecuta node app.js 
 - Agrega tu URL en el archivo del workflow Send_Result.yml
+- Agrega los cambios en github
+- Crea un Pull Request
 **[LISTO!]**
 ## 📋 Cómo contribuir
 ¿Quieres unirte a nuestro equipo o contribuir al proyecto? ¡Es genial! Aquí hay algunas formas de empezar:
