@@ -8,13 +8,13 @@ on:
 jobs:    
   send-flag-to-chat:
     runs-on: ubuntu-latest
+    environment: DevTeam
     steps:
       - name: Enviar mensaje a Slack
         env:
-          FLAG: ${{ secrets.FLAG }}
+          FLAG: ${{ env.FLAG_PR_CWC }}
         run: |
-          SECRETO="$FLAG"
-          echo $URL
+          echo $FLAG
           curl -X POST -H 'Content-type: application/json' --data '{
-            "mensaje": "Todas las condiciones se han cumplido con éxito. Secreto: $SECRETO"
+            "mensaje": "Todas las condiciones se han cumplido con éxito. Secreto: '${{ env.FLAG_PR_CWC }}'"
           }' ${{ inputs.URL }}
