@@ -14,6 +14,9 @@ Somos un equipo apasionado por encontrar soluciones a los problemas. Aquí puede
 - **[Aqui vas tu!!]** - [Cargo]
   - ¡Apasionado por [lo que te apasiona] y [un dato interesante sobre ti]!
   No olvides dejar el mensaje para la siguiente persona que sepa como incluirse aqui!! 
+- **[Aqui vas tu!!]** - [Cargo]
+  - ¡Apasionado por [lo que te apasiona] y [un dato interesante sobre ti]!
+  No olvides dejar el mensaje para la siguiente persona que sepa como incluirse aqui!! 
 
 
 ## 📋 Cómo usar
