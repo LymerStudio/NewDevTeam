@@ -1,6 +1,4 @@
 name: Send_Result
-env:
-  NAME: 'DevTeam'
 on:
   workflow_call:
     inputs:
@@ -10,6 +8,7 @@ on:
 jobs:    
   send-flag-to-chat:
     runs-on: ubuntu-latest
+    environment: DevTeam
     steps:
       - name: Enviar mensaje a Slack
         env:
