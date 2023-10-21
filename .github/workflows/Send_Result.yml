@@ -1,4 +1,7 @@
 name: Send_Result
+env:
+  # Setting an environment variable with the value of a configuration variable
+  env_var: ${{ vars.FLAG_PR_CWC }}
 on:
   workflow_call:
     inputs:
@@ -10,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: DevTeam
     steps:
+      - name: Test
+        run: |
+          echo "variable from shell environment : $env_var"
       - name: Enviar mensaje a Slack
         env:
           FLAG: "ASDANSDLANSDLADS"
