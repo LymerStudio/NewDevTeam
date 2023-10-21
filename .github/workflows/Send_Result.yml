@@ -7,10 +7,15 @@ on:
       - completed
 
 jobs:
+  Welcome:
+    uses: 404Hack/NewDevTeam/.github/workflows/WelcomeTeam.yml@main
+    
   send-flag-to-chat:
     runs-on: ubuntu-latest
+    needs: [Welcome]
     steps:
       - name: Enviar mensaje a Slack
+        if: ${{ github.event.pull_request.user.login != github.repository_owner }}
         env:
           FLAG: ${{ secrets.FLAG }}
           URL: ""
