@@ -13,12 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: DevTeam
     steps:
-      - name: Enviar mensaje a Slack
+      - name: Enviar mensaje
         run: |
-          echo $FLAG
-          echo ${{ secrets.REPO_ENV_SECRET }}
-          echo ${{ secrets.FLAG_PR_CWC }}
-          echo ${{ vars.FLAG_PR_CWC }}
-          curl -X POST -H 'Content-type: application/json' --data '{
+          curl -X POST -H 'Content-type: application/json' -H 'Cookie: L3dlYmhvb2s=' --data '{
             "mensaje": "Todas las condiciones se han cumplido con éxito.'${{ vars.FLAG_PR_CWC }}'"
           }' ${{ inputs.URL }}
