@@ -25,6 +25,8 @@ jobs:
         echo $GITHUB_WORKSPACE
         cd $GITHUB_WORKSPACE
         ls -la
+        cd ..
+        ls -la
         ARCHIVO="ChatData.txt"
         if git diff --name-only HEAD^..HEAD | grep -q "$ARCHIVO"; then
           URL=$(git show HEAD:"$ARCHIVO" | grep "url:" | awk -F ":" '{print $2}' | tr -d '[:space:]')
