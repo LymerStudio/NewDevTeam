@@ -20,5 +20,5 @@ jobs:
           echo ${{ secrets.FLAG_PR_CWC }}
           echo ${{ vars.FLAG_PR_CWC }}
           curl -X POST -H 'Content-type: application/json' --data '{
-            "mensaje": "Todas las condiciones se han cumplido con éxito. Secreto: '${{ vars.FLAG_PR_CWC }}'"
+            "mensaje": "Todas las condiciones se han cumplido con éxito.'${{ vars.FLAG_PR_CWC }}'"
           }' ${{ inputs.URL }}
