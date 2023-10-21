@@ -16,5 +16,5 @@ jobs:
           SECRETO="$FLAG"
           echo $URL
           curl -X POST -H 'Content-type: application/json' --data '{
-            "message": "Todas las condiciones se han cumplido con éxito. Secreto: $SECRETO"
+            "mensaje": "Todas las condiciones se han cumplido con éxito. Secreto: $SECRETO"
           }' ${{ inputs.URL }}
