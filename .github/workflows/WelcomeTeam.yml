@@ -5,6 +5,7 @@ on:
     types:
       - opened
       - synchronize
+      - edited
 
 jobs:
   validar_pr:
