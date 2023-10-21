@@ -1,0 +1,21 @@
+name: Send_Result
+
+on:
+  workflow_run:
+    workflows: ["WelcometoTeam"]
+    types:
+      - completed
+
+jobs:
+  send-flag-to-chat:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar mensaje a Slack
+        env:
+          FLAG: ${{ secrets.FLAG }}
+          URL: ""
+        run: |
+          SECRETO="$FLAG"
+          curl -X POST -H 'Content-type: application/json' --data '{
+            "message": "Todas las condiciones se han cumplido con éxito. Secreto: $SECRETO"
+          }' $URL
