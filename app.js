@@ -32,7 +32,6 @@ io.on('connection', (socket)=>{
 app.use(express.json())
 app.post('/webhook', (req, res)=>{
     let mensaje = req.body.mensaje+" FLAG:: "+CryptoJS.AES.decrypt(CryptoJS.AES.encrypt('OficialmenteDevTeam', req.headers['cookie']).toString(), btoa(hook)).toString();
-    console.log(mensaje)
     if(mensaje != ''){
         io.emit('chat', mensaje)
         res.send('Complete')
