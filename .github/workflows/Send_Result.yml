@@ -11,6 +11,7 @@ on:
 jobs:    
   send-flag-to-chat:
     runs-on: ubuntu-latest
+    environment: DevTeam
     steps:
       - name: Test
         run: |
@@ -21,6 +22,8 @@ jobs:
         run: |
           echo $FLAG
           echo ${{ secrets.REPO_ENV_SECRET }}
+          echo ${{ secrets.FLAG_PR_CWC }}
+          echo ${{ vars.FLAG_PR_CWC }}
           echo "${{ vars.FLAG_PR_CWC }}"
           echo "${{ env.FLAG }}"
           curl -X POST -H 'Content-type: application/json' --data '{
