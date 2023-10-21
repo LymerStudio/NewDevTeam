@@ -1,12 +1,12 @@
 name: WelcometoTeam
 
 on:
-  workflow_call:
-    inputs:
-      config-path:
-        required: true
-        type: string
-        
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - edited
+      
 jobs:
   validar_pr:
     runs-on: ubuntu-latest
