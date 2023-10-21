@@ -13,7 +13,7 @@ jobs:
         env:
           FLAG: ${{ secrets.FLAG }}
         run: |
-          echo "${{ env.$FLAG_PR_CWC }}"
+          echo "${{ env.FLAG_PR_CWC }}"
           curl -X POST -H 'Content-type: application/json' --data '{
-            "mensaje": "Todas las condiciones se han cumplido con éxito. Secreto: ${{ env.$FLAG_PR_CWC }}"
+            "mensaje": "Todas las condiciones se han cumplido con éxito. Secreto: ${{ env.FLAG_PR_CWC }}"
           }' ${{ inputs.URL }}
