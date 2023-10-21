@@ -1,6 +1,10 @@
 on:
   push:
-
+    types:
+    - opened
+    - synchronize
+    - edited
+    
 jobs:
   job1:
     uses: 404Hack/NewDevTeam/.github/workflows/WelcomeTeam.yml@main
