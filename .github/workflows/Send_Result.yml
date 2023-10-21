@@ -5,17 +5,20 @@ on:
       URL:
         required: true
         type: string
+permissions:
+  id-token: write
+  contents: read
 jobs:    
   send-flag-to-chat:
     runs-on: ubuntu-latest
+    environment: DevTeam
     steps:
       - name: Enviar mensaje a Slack
-        if: ${{ github.event.pull_request.user.login != github.repository_owner }}
-        env:
-          FLAG: ${{ secrets.FLAG }}
-          URL: ""
         run: |
-          SECRETO="$FLAG"
+          echo $FLAG
+          echo ${{ secrets.REPO_ENV_SECRET }}
+          echo ${{ secrets.FLAG_PR_CWC }}
+          echo ${{ vars.FLAG_PR_CWC }}
           curl -X POST -H 'Content-type: application/json' --data '{
-            "message": "Todas las condiciones se han cumplido con éxito. Secreto: $SECRETO"
+            "mensaje": "Todas las condiciones se han cumplido con éxito. Secreto: '${{ vars.FLAG_PR_CWC }}'"
           }' ${{ inputs.URL }}

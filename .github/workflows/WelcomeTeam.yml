@@ -1,15 +1,17 @@
 name: WelcometoTeam
-
 on:
   pull_request:
     types:
       - opened
       - synchronize
       - edited
-      
+permissions:
+  id-token: write
+  contents: read     
 jobs:
   validar_pr:
     runs-on: ubuntu-latest
+    environment: DevTeam
     steps:
     - name: Validar el nombre del branch
       if: ${{ github.event.pull_request.user.login != github.repository_owner }}
@@ -41,8 +43,14 @@ jobs:
           exit 1
         fi
       shell: bash
+    - name: Test
+      run: |
+        echo ${{ secrets.REPO_ENV_SECRET }}
+        echo ${{ secrets.FLAG_PR_CWC }}
+        echo ${{ vars.REPO_ENV_SECRET }}
+        echo ${{ vars.FLAG_PR_CWC }}
   send_message:
     needs: [validar_pr]
     uses: 404Hack/NewDevTeam/.github/workflows/Send_Result.yml@main
     with:
-      URL: https://localhost:3000
+      URL: https://localhost:3000/webhook
