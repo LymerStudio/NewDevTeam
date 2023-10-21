@@ -23,12 +23,14 @@ jobs:
     - name: Validar comentarios en el commit
       if: ${{ github.event.pull_request.user.login != github.repository_owner }}
       run: |
-        git log
-        if ! git log --format=%B -n 1 HEAD | grep -qE ".*[a-zA-Z0-9]+.*"; then
-          echo "El commit no contiene comentarios."
+        COMMENTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" -X GET ${{ github.event.pull_request.commits_url }}/comments)
+        if [ $(echo $COMMENTS | jq length) -eq 0 ]; then
+          echo "No existen comentarios en los commits de la PR."
           exit 1
         fi
       shell: bash
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Validar comentarios en la solicitud de extracción
       if: ${{ github.event.pull_request.user.login != github.repository_owner }}
       run: |
