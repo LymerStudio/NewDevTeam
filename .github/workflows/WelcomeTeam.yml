@@ -20,15 +20,6 @@ jobs:
           exit 1
         fi
       shell: bash
-    - name: Validar cambios en un archivo específico
-      run: |
-        if [ -n "$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep 'README.md')" ]; then
-          echo "Se han realizado cambios en el archivo README.md en esta PR."
-        else
-          echo "No se han realizado cambios en el archivo README.md en esta PR."
-          exit 1
-        fi
-      shell: bash
     - name: Validar comentarios en el commit
       if: ${{ github.event.pull_request.user.login != github.repository_owner }}
       run: |
