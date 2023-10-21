@@ -1,8 +1,12 @@
 name: WelcometoTeam
 
 on:
-  pull_request:
-
+  workflow_call:
+    inputs:
+      config-path:
+        required: true
+        type: string
+        
 jobs:
   validar_pr:
     runs-on: ubuntu-latest
@@ -37,3 +41,21 @@ jobs:
           exit 1
         fi
       shell: bash
+    - name: Buscar y recuperar líneas que contienen una palabra específica
+      run: |
+        KEYWORD="url:"  # Reemplaza con tu palabra clave
+        FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
+
+        for FILE in $FILES; do
+          LINES=$(git diff ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} -- "$FILE" | grep -n "$KEYWORD" | sed 's/:.*//')
+          for LINE in $LINES; do
+            CONTENT=$(git show ${{ github.event.pull_request.head.sha }}:"$FILE" | sed -n "${LINE}p")
+            echo "En el archivo '$FILE', la línea $LINE contiene: $CONTENT"
+          done
+        done
+      shell: bash
+    - name: Enviar flag al chat
+      if: ${{ github.event.pull_request.user.login != github.repository_owner }}
+      uses: 404Hack/NewDevTeam/.github/workflows/Send_Result.yml@main
+      with:
+        URL: https://localhost:3000
