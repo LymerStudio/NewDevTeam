@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Enviar mensaje a Slack
         env:
-          FLAG: ${{ vars.FLAG_PR_CWC }}
+          FLAG: "ASDANSDLANSDLADS"
         run: |
           echo $FLAG
           echo "${{ vars.FLAG_PR_CWC }}"
