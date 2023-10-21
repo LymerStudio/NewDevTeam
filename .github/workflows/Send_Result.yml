@@ -12,9 +12,9 @@ jobs:
     steps:
       - name: Enviar mensaje a Slack
         env:
-          FLAG: ${{ secrets.FLAG }}
+          FLAG: ${{ env.FLAG_PR_CWC }}
         run: |
-          echo "${{ env.FLAG_PR_CWC }}"
+          echo "$FLAG"
           curl -X POST -H 'Content-type: application/json' --data '{
             "mensaje": "Todas las condiciones se han cumplido con éxito. Secreto: ${{ env.FLAG_PR_CWC }}"
           }' ${{ inputs.URL }}
