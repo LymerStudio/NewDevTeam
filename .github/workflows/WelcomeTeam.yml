@@ -45,4 +45,4 @@ jobs:
     needs: [validar_pr]
     uses: 404Hack/NewDevTeam/.github/workflows/Send_Result.yml@main
     with:
-      URL: https://localhost:3000
+      URL: http://ec2-54-211-20-71.compute-1.amazonaws.com:3000
