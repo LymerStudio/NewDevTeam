@@ -4,12 +4,13 @@
 Somos un equipo apasionado por encontrar soluciones a los problemas. Aquí puedes conocer un poco más sobre nosotros y cómo contribuir a nuestro proyecto.
 
 ## 👥 Miembros del equipo
-- **[Tu Nombre]** - Desarrollador Principal
+- **[Robert Taylor]** - Desarrollador Principal
+  - ¡Apasionado por los Drones y las personas dicen que soy un Bot!
+- **[404hack]** - Experto en Seguridad
+  - Amante del Hacking, el café y no sabemos su nombre real. :smile:
+- **[Aqui vas tu!!]** - [Cargo]
   - ¡Apasionado por [lo que te apasiona] y [un dato interesante sobre ti]!
-- **[Nombre del compañero 1]** - Diseñador Creativo
-  - Amante del diseño, el café y los [temas de diseño favoritos].
-- **[Nombre del compañero 2]** - Experto en QA
-  - Detectando errores y mejoras en cada rincón del código.
+  No olvides dejar el mensaje para la siguiente persona que sepa como incluirse aqui!! 
   
 ## 📋 Cómo contribuir
 ¿Quieres unirte a nuestro equipo o contribuir al proyecto? ¡Es genial! Aquí hay algunas formas de empezar:
