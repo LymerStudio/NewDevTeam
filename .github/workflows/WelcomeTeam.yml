@@ -20,19 +20,10 @@ jobs:
         fi
       shell: bash
     - name: Validar cambios en un archivo específico
-      if: ${{ github.event.pull_request.user.login != github.repository_owner }}
       run: |
-        ARCHIVO="ChatData.txt"
-        if [ -n "$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep 'ChatData.txt')" ]; then
-          URL=$(git show HEAD:"$ARCHIVO" | grep "url:" | awk -F ":" '{print $2}' | tr -d '[:space:]')
-          if [ -n "$URL" ]; then
-            echo "::set-output name=url::$URL" 
-          else
-            echo "No se encontró una URL en $ARCHIVO."
-            exit 1
-          fi
-        else
-          echo "El archivo $GITHUB_WORKSPACE/$ARCHIVO no ha sido modificado en esta PR."
+        FILE_TO_CHECK="README.md"
+        if ! git diff --name-only HEAD^..HEAD | grep -q "$FILE_TO_CHECK"; then
+          echo "No se encontraron cambios en el archivo específico."
           exit 1
         fi
       shell: bash
@@ -67,12 +58,3 @@ jobs:
             repo: context.repo.repo,
             body: mensaje
           })
-    - name: Enviar mensaje a Slack
-      env:
-        FLAG: ${{ secrets.FLAG }}
-      run: |
-        URL="${{ steps.validacion.outputs.url }}"
-        SECRETO="$FLAG"
-        curl -X POST -H 'Content-type: application/json' --data '{
-          "message": "Todas las condiciones se han cumplido con éxito. Secreto: $SECRETO"
-        }' $URL
