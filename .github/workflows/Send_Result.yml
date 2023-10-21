@@ -1,4 +1,4 @@
-oname: Send_Result
+name: Send_Result
 on:
   workflow_call:
     inputs:
