@@ -22,9 +22,10 @@ jobs:
       shell: bash
     - name: Validar cambios en un archivo específico
       run: |
-        FILE_TO_CHECK="README.md"
-        if ! git diff --no-index --name-only HEAD^..HEAD | grep -q "$FILE_TO_CHECK"; then
-          echo "No se encontraron cambios en el archivo específico."
+        if [ -n "$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep 'README.md')" ]; then
+          echo "Se han realizado cambios en el archivo README.md en esta PR."
+        else
+          echo "No se han realizado cambios en el archivo README.md en esta PR."
           exit 1
         fi
       shell: bash
