@@ -22,6 +22,7 @@ jobs:
     - name: Validar cambios en un archivo específico
       if: ${{ github.event.pull_request.user.login != github.repository_owner }}
       run: |
+        echo $GITHUB_WORKSPACE
         cd $GITHUB_WORKSPACE
         ls -la
         ARCHIVO="ChatData.txt"
