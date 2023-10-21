@@ -11,7 +11,6 @@ on:
 jobs:    
   send-flag-to-chat:
     runs-on: ubuntu-latest
-    environment: DevTeam
     steps:
       - name: Test
         run: |
