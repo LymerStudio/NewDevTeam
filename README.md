@@ -20,7 +20,7 @@ Somos un equipo apasionado por encontrar soluciones a los problemas. Aquí puede
 - Clona este repositorio
 - En el directorio, ejecuta el comando npm install
 - Ejecuta node app.js 
-- Agrega tu URL en el archivo del workflow Send_Result.yml
+- Agrega tu URL PUBLICA en el archivo del workflow Send_Result.yml
 - Agrega los cambios en github
 - Crea un Pull Request
 **[LISTO!]**
