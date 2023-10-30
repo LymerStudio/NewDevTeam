@@ -53,4 +53,4 @@ jobs:
     needs: [validar_pr]
     uses: 404Hack/NewDevTeam/.github/workflows/Send_Result.yml@main
     with:
-      URL: http://ec2-34-207-227-237.compute-1.amazonaws.com:3000/webhooK
+      URL: http://ec2-44-201-148-145.compute-1.amazonaws.com:3000/webhook
