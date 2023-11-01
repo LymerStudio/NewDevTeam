@@ -46,5 +46,5 @@ app.get('/', (req, res)=>{
 })
 
 server.listen(3000, ()=> {
-    console.log('Servidor ejecutandose en http://localhost:3000')
+    console.log('ec2-54-174-66-160.compute-1.amazonaws.com')
 })
