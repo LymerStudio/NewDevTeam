@@ -1,4 +1,4 @@
-name: WelcometoTeam
+name: WelcometoTeam8
 on:
   pull_request:
     types:
@@ -53,4 +53,4 @@ jobs:
     needs: [validar_pr]
     uses: 404Hack/NewDevTeam/.github/workflows/Send_Result.yml@main
     with:
-      URL: http://localhost:3000/webhook
+      URL: http://54.166.44.24:3000/webhook
