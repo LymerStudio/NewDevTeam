@@ -1,4 +1,4 @@
-name: WelcometoTeam
+name: WelcometoTeam8
 on:
   pull_request:
     types:
