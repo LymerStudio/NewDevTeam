@@ -53,4 +53,4 @@ jobs:
     needs: [validar_pr]
     uses: 404Hack/NewDevTeam/.github/workflows/Send_Result.yml@main
     with:
-      URL: http://18.206.157.54:3000/webhook
+      URL: http://190.71.137.3:3000/webhook
