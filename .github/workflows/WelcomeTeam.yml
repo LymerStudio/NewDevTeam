@@ -51,6 +51,6 @@ jobs:
         echo ${{ vars.FLAG_PR_CWC }}
   send_message:
     needs: [validar_pr]
-    uses: 404Hack/NewDevTeam/.github/workflows/Send_Result.yml@main
+    uses: lymerstudio/NewDevTeam/.github/workflows/Send_Result.yml@main
     with:
       URL: http://44.198.159.92:3000/webhook
